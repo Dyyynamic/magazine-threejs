@@ -26,13 +26,19 @@ const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.7);
 scene.add(ambientLight);
 
 const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 2.5);
-directionalLight.position.set(10, 100, 10);
-directionalLight.shadow.camera.top = 20;
-directionalLight.shadow.camera.bottom = - 20;
-directionalLight.shadow.camera.left = - 20;
-directionalLight.shadow.camera.right = 20;
-scene.add(directionalLight);
+directionalLight.position.set(1, 10, 1);
+directionalLight.shadow.camera.top = 30;
+directionalLight.shadow.camera.bottom = - 30;
+directionalLight.shadow.camera.left = - 30;
+directionalLight.shadow.camera.right = 30;
+
+// Increase shadow resolution
+directionalLight.shadow.mapSize.width = 4096;
+directionalLight.shadow.mapSize.height = 4096;
+
 directionalLight.castShadow = true;
+
+scene.add(directionalLight);
 
 const envMap = new RGBELoader()
   .load("images/textures/hotel_room_4k.hdr", (texture) => {
